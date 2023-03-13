@@ -6,7 +6,8 @@
 [node name="Main" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource("1_gwums")]
-position = Vector2(87, 470)
+position = Vector2(84, 473)
+jumpVelocity = 400.0
 
 [node name="StaticBody2D" parent="." instance=ExtResource("2_sxdsn")]
 position = Vector2(65, 594)
