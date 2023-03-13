@@ -4,6 +4,7 @@ public partial class Player : CharacterBody2D
 {
   [Export] private float speed = 300.0f;
   [Export] private float jumpVelocity = -400.0f;
+  [Export] private float gravityScale = 1f;
 
   private float gravity;
 
@@ -22,14 +23,14 @@ public partial class Player : CharacterBody2D
 
   public void ApplyGravity(double delta)
   {
-    if (!IsOnFloor()) Velocity += Vector2.Down * gravity * (float)delta;
+    if (!IsOnFloor()) Velocity += Vector2.Down * gravity * gravityScale * (float)delta;
   }
 
   public void Jump()
   {
     if (Input.IsActionJustPressed("jump") && IsOnFloor())
     {
-      Velocity = Vector2.Up * jumpVelocity;
+      Velocity += Vector2.Up * jumpVelocity;
     }
   }
 

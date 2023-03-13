@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpu60n3hcdl3b"]
+[gd_scene load_steps=4 format=3 uid="uid://br2m8ge0gns8y"]
 
 [ext_resource type="Script" path="res://scripts/Player.cs" id="1_wtohv"]
 [ext_resource type="Texture2D" uid="uid://jeqheslskl64" path="res://art/player.png" id="2_sa1tb"]
@@ -9,6 +9,8 @@ height = 102.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_wtohv")
+jumpVelocity = 600.0
+gravityScale = 1.5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
@@ -19,3 +21,4 @@ position = Vector2(5, 1)
 shape = SubResource("CapsuleShape2D_qpemn")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -320)
