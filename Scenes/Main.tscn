@@ -1,13 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqmka4eajpjma"]
+[gd_scene load_steps=4 format=3 uid="uid://dqmka4eajpjma"]
 
 [ext_resource type="PackedScene" uid="uid://dohh34b57rv1a" path="res://Scenes/Player.tscn" id="1_0dvxw"]
+[ext_resource type="PackedScene" uid="uid://ur25y66c3gkl" path="res://Scenes/PlayerCamera.tscn" id="2_3e7un"]
 [ext_resource type="PackedScene" uid="uid://g13vri1qjp2w" path="res://Scenes/Levels/Level_01.tscn" id="2_4ckgj"]
 
 [node name="Main" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource("1_0dvxw")]
-position = Vector2(-469, 197)
+position = Vector2(260, 807)
+speed = 600.0
 jumpVelocity = 700.0
 gravityScale = 2.0
 
+[node name="PlayerCamera" parent="Player" node_paths=PackedStringArray("tileMap") instance=ExtResource("2_3e7un")]
+position_smoothing_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+tileMap = NodePath("../../Level")
+
 [node name="Level" parent="." instance=ExtResource("2_4ckgj")]
+cell_quadrant_size = 128
