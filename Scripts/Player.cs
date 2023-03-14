@@ -5,7 +5,8 @@ public partial class Player : CharacterBody2D
   [Export] private float speed = 300.0f;
   [Export] private float jumpVelocity = 700.0f;
   [Export] private float gravityScale = 2f;
-  [Export] private Color lineColor;
+  [Export] private PackedScene bomb;
+  private Color lineColor = new Color(1, 1, 1);
 
   private float gravity;
   private bool drawLine = false;
@@ -30,6 +31,11 @@ public partial class Player : CharacterBody2D
     if (Input.IsActionJustPressed("bomb"))
     {
       drawLine = true;
+
+      var bombSpawn = GetNode<Node2D>("BombSpawn");
+      var bombInstance = bomb.Instantiate<Bomb>();
+
+      bombSpawn.AddChild(bombInstance);
     }
     else if (Input.IsActionPressed("bomb"))
     {
@@ -39,6 +45,9 @@ public partial class Player : CharacterBody2D
     {
       drawLine = false;
       QueueRedraw();
+
+      var bombInstance = GetNode<Bomb>("BombSpawn/Bomb");
+      bombInstance.QueueFree();
     }
   }
 

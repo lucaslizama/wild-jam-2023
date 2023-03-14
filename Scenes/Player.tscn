@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dohh34b57rv1a"]
+[gd_scene load_steps=5 format=3 uid="uid://dohh34b57rv1a"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_wtohv"]
 [ext_resource type="Texture2D" uid="uid://jeqheslskl64" path="res://Textures/player.png" id="2_sa1tb"]
+[ext_resource type="PackedScene" uid="uid://d2e0gvpun37ft" path="res://Scenes/Bomb.tscn" id="2_whlhp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qpemn"]
 radius = 28.0
@@ -11,6 +12,7 @@ height = 102.0
 script = ExtResource("1_wtohv")
 jumpVelocity = 600.0
 gravityScale = 1.5
+bomb = ExtResource("2_whlhp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
@@ -19,3 +21,6 @@ texture = ExtResource("2_sa1tb")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(5, 1)
 shape = SubResource("CapsuleShape2D_qpemn")
+
+[node name="BombSpawn" type="Node2D" parent="."]
+position = Vector2(-23, 14)

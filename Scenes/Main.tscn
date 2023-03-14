@@ -11,9 +11,9 @@ position = Vector2(260, 807)
 speed = 600.0
 jumpVelocity = 700.0
 gravityScale = 2.0
-lineColor = Color(1, 1, 1, 1)
 
 [node name="PlayerCamera" parent="Player" node_paths=PackedStringArray("tileMap") instance=ExtResource("2_3e7un")]
+zoom = Vector2(0.628, 0.628)
 position_smoothing_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
