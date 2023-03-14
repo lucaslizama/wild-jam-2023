@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkl5r6klbs2s5"]
+
+[ext_resource type="Texture2D" uid="uid://d0oabo1w72lgi" path="res://Textures/WoodenBox.png" id="1_x5oof"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hi2oi"]
+size = Vector2(129, 127)
+
+[node name="WoodenBox" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_x5oof")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_hi2oi")
