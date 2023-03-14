@@ -3,8 +3,8 @@ using Godot;
 public partial class Player : CharacterBody2D
 {
   [Export] private float speed = 300.0f;
-  [Export] private float jumpVelocity = -400.0f;
-  [Export] private float gravityScale = 1f;
+  [Export] private float jumpVelocity = 700.0f;
+  [Export] private float gravityScale = 2f;
 
   private float gravity;
 
