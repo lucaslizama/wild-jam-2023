@@ -5,12 +5,41 @@ public partial class Player : CharacterBody2D
   [Export] private float speed = 300.0f;
   [Export] private float jumpVelocity = 700.0f;
   [Export] private float gravityScale = 2f;
+  [Export] private Color lineColor;
 
   private float gravity;
+  private bool drawLine = false;
 
   public override void _Ready()
   {
     gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
+  }
+
+  public override void _Draw()
+  {
+    if (drawLine)
+    {
+      var origin = ToLocal(GlobalPosition);
+      var target = GetLocalMousePosition();
+      DrawDashedLine(origin, (target - origin).Normalized() * 250f, lineColor, 10f, 20f, false);
+    }
+  }
+
+  public override void _Process(double delta)
+  {
+    if (Input.IsActionJustPressed("bomb"))
+    {
+      drawLine = true;
+    }
+    else if (Input.IsActionPressed("bomb"))
+    {
+      QueueRedraw();
+    }
+    else if (Input.IsActionJustReleased("bomb"))
+    {
+      drawLine = false;
+      QueueRedraw();
+    }
   }
 
   public override void _PhysicsProcess(double delta)
