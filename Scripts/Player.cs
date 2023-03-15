@@ -32,10 +32,9 @@ public partial class Player : CharacterBody2D
     {
       drawLine = true;
 
-      var bombSpawn = GetNode<Node2D>("BombSpawn");
       var bombInstance = bomb.Instantiate<Bomb>();
 
-      bombSpawn.AddChild(bombInstance);
+      GetNode<Node2D>("BombSpawn").AddChild(bombInstance);
     }
     else if (Input.IsActionPressed("bomb"))
     {
@@ -47,7 +46,11 @@ public partial class Player : CharacterBody2D
       QueueRedraw();
 
       var bombInstance = GetNode<Bomb>("BombSpawn/Bomb");
-      bombInstance.QueueFree();
+      bombInstance.Freeze = false;
+      bombInstance.Reparent(GetParent());
+
+      var direction = (GetLocalMousePosition() - ToLocal(GlobalPosition)).Normalized();
+      bombInstance.Throw(direction);
     }
   }
 

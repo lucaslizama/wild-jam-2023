@@ -1,14 +1,12 @@
 using Godot;
 
-public partial class Bomb : Node2D
+public partial class Bomb : RigidBody2D
 {
-  // Called when the node enters the scene tree for the first time.
-  public override void _Ready()
-  {
-  }
+  [Export] private float throwVelocity;
 
-  // Called every frame. 'delta' is the elapsed time since the previous frame.
-  public override void _Process(double delta)
+  public void Throw(Vector2 direction)
   {
+    Freeze = false;
+    ApplyImpulse(direction * throwVelocity);
   }
 }

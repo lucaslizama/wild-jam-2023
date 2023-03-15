@@ -9,6 +9,7 @@ radius = 28.0
 height = 102.0
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 2
 script = ExtResource("1_wtohv")
 jumpVelocity = 600.0
 gravityScale = 1.5
