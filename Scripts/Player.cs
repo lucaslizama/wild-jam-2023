@@ -46,8 +46,7 @@ public partial class Player : CharacterBody2D
       QueueRedraw();
 
       var bombInstance = GetNode<Bomb>("BombSpawn/Bomb");
-      bombInstance.Freeze = false;
-      bombInstance.Reparent(GetParent());
+      // bombInstance.Reparent(GetParent());
 
       var direction = (GetLocalMousePosition() - ToLocal(GlobalPosition)).Normalized();
       bombInstance.Throw(direction);

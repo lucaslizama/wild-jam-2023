@@ -53,7 +53,7 @@ animations = [{
 "duration": 1.0,
 "texture": null
 }],
-"loop": true,
+"loop": false,
 "name": &"explosion",
 "speed": 12.0
 }, {
@@ -75,6 +75,8 @@ radius = 9.4
 [node name="Bomb" type="RigidBody2D"]
 collision_layer = 4
 collision_mask = 2
+max_contacts_reported = 1
+contact_monitor = true
 freeze = true
 script = ExtResource("1_488ep")
 throwVelocity = 2000.0
@@ -82,10 +84,12 @@ throwVelocity = 2000.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_5n4pi")
-animation = &"idle"
+animation = &"explosion"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3.275, 3.309)
 scale = Vector2(1, 1)
 shape = SubResource("CircleShape2D_xqmbp")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]

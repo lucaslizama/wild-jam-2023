@@ -6,6 +6,8 @@
 size = Vector2(129, 127)
 
 [node name="WoodenBox" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 7
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_x5oof")
