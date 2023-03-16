@@ -24,4 +24,4 @@ position = Vector2(5, 1)
 shape = SubResource("CapsuleShape2D_qpemn")
 
 [node name="BombSpawn" type="Node2D" parent="."]
-position = Vector2(-23, 14)
+position = Vector2(-23, 9)

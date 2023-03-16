@@ -46,7 +46,11 @@ public partial class Player : CharacterBody2D
       QueueRedraw();
 
       var bombInstance = GetNode<Bomb>("BombSpawn/Bomb");
-      // bombInstance.Reparent(GetParent());
+      bombInstance.Position += Vector2.Up * 10;
+      bombInstance.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Scale = new Vector2(0.8f, 0.8f);
+      bombInstance.GetNode<CollisionShape2D>("CollisionShape2D").Position = new Vector2(12.8f, 12.8f);
+      bombInstance.GetNode<CollisionShape2D>("CollisionShape2D").Scale = new Vector2(4, 4);
+
 
       var direction = (GetLocalMousePosition() - ToLocal(GlobalPosition)).Normalized();
       bombInstance.Throw(direction);

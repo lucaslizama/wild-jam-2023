@@ -84,11 +84,11 @@ throwVelocity = 2000.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_5n4pi")
-animation = &"explosion"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3.275, 3.309)
+position = Vector2(3.2, 3.2)
 shape = SubResource("CircleShape2D_xqmbp")
 
 [connection signal="body_entered" from="." to="." method="OnBodyEntered"]
