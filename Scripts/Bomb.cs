@@ -1,11 +1,8 @@
 using Godot;
 
-public partial class Bomb : RigidBody2D
+public partial class Bomb : TeleportableRigidbody2D
 {
   [Export] private float throwVelocity;
-
-  public bool willTeleport = false;
-  public Vector2 teleportTarget = Vector2.Zero;
 
   public void Throw(Vector2 direction)
   {
@@ -35,5 +32,11 @@ public partial class Bomb : RigidBody2D
       willTeleport = false;
       teleportTarget = Vector2.Zero;
     }
+  }
+
+  public override void Teleport(Vector2 destination)
+  {
+    teleportTarget = destination;
+    willTeleport = true;
   }
 }

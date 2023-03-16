@@ -54,4 +54,4 @@ bomb={
 
 2d_physics/layer_1="player"
 2d_physics/layer_2="world"
-2d_physics/layer_3="Proyectiles"
+2d_physics/layer_3="proyectiles"

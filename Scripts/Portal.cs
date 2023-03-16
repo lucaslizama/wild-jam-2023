@@ -8,19 +8,16 @@ public partial class Portal : Area2D
 
   private void OnBodyEntered(Node2D body)
   {
-    if (body is Bomb bomb && canSend)
+    if (body is ITeleportable teleportable && canSend)
     {
-      GD.Print("Entered: " + Name);
-
+      teleportable.Teleport(destination.Position);
       destination.canSend = false;
-      bomb.teleportTarget = destination.Position;
-      bomb.willTeleport = true;
     }
   }
 
   private void OnBodyExited(Node2D body)
   {
-    if (body is Bomb bomb && !canSend)
+    if (body is ITeleportable && !canSend)
     {
       GD.Print("Exited: " + Name);
       canSend = true;

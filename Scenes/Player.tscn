@@ -1,12 +1,92 @@
-[gd_scene load_steps=5 format=3 uid="uid://dohh34b57rv1a"]
+[gd_scene load_steps=13 format=3 uid="uid://dohh34b57rv1a"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_wtohv"]
-[ext_resource type="Texture2D" uid="uid://jeqheslskl64" path="res://Textures/player.png" id="2_sa1tb"]
 [ext_resource type="PackedScene" uid="uid://d2e0gvpun37ft" path="res://Scenes/Bomb.tscn" id="2_whlhp"]
+[ext_resource type="Texture2D" uid="uid://b8nkktw44rj11" path="res://Textures/PlayerBear.png" id="3_lfagn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4embw"]
+atlas = ExtResource("3_lfagn")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6adq1"]
+atlas = ExtResource("3_lfagn")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbrrj"]
+atlas = ExtResource("3_lfagn")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_il0b6"]
+atlas = ExtResource("3_lfagn")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xavxc"]
+atlas = ExtResource("3_lfagn")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e21eb"]
+atlas = ExtResource("3_lfagn")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ruymv"]
+atlas = ExtResource("3_lfagn")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qoqos"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4embw")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6adq1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbrrj")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_il0b6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xavxc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e21eb")
+}],
+"loop": true,
+"name": &"land",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ruymv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e21eb")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qpemn"]
-radius = 28.0
-height = 102.0
+radius = 27.0
+height = 106.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
@@ -15,12 +95,13 @@ jumpVelocity = 600.0
 gravityScale = 1.5
 bomb = ExtResource("2_whlhp")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_sa1tb")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qoqos")
+animation = &"idle"
+autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(5, 1)
+position = Vector2(-3, 10)
 shape = SubResource("CapsuleShape2D_qpemn")
 
 [node name="BombSpawn" type="Node2D" parent="."]

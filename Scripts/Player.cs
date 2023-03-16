@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class Player : CharacterBody2D
+public partial class Player : TeleportableCharacterBody2D
 {
   [Export] private float speed = 300.0f;
   [Export] private float jumpVelocity = 700.0f;
@@ -86,5 +86,10 @@ public partial class Player : CharacterBody2D
     velocity.X = direction != Vector2.Zero ? direction.X * speed : Mathf.MoveToward(velocity.X, 0, speed);
 
     Velocity = velocity;
+  }
+
+  public override void Teleport(Vector2 destination)
+  {
+    Position = destination;
   }
 }

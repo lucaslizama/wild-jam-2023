@@ -8,9 +8,9 @@
 [node name="Main" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource("1_0dvxw")]
-position = Vector2(1865, 424)
+position = Vector2(4652, 431)
 speed = 600.0
-jumpVelocity = 700.0
+jumpVelocity = 900.0
 gravityScale = 2.0
 
 [node name="PlayerCamera" parent="Player" node_paths=PackedStringArray("tileMap") instance=ExtResource("2_3e7un")]
@@ -21,14 +21,18 @@ editor_draw_drag_margin = true
 tileMap = NodePath("../../Level")
 
 [node name="Level" parent="." instance=ExtResource("2_4ckgj")]
+scale = Vector2(1, 0.987751)
 cell_quadrant_size = 128
 
 [node name="Portal" parent="." node_paths=PackedStringArray("destination") instance=ExtResource("4_oyh36")]
-position = Vector2(2166, 361)
+position = Vector2(4967, 561)
+rotation = -1.57079
 destination = NodePath("../Portal2")
 
-[node name="Portal2" parent="." instance=ExtResource("4_oyh36")]
-position = Vector2(2858, 279)
+[node name="Portal2" parent="." node_paths=PackedStringArray("destination") instance=ExtResource("4_oyh36")]
+position = Vector2(5440, 705)
+rotation = 1.57079
+destination = NodePath("../Portal")
 
 [node name="AnimatedSprite2D" parent="Portal2" index="0"]
 animation = &"red"
