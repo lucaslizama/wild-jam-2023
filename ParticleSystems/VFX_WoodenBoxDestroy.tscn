@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://27psyer2qimd"]
 
 [ext_resource type="Texture2D" uid="uid://bpuvgx1656ay6" path="res://Textures/WoodPlank.png" id="1_w11wv"]
 
@@ -7,7 +7,6 @@ offsets = PackedFloat32Array(0.638514, 0.986486)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="VFX_WoodenBoxDestroy" type="CPUParticles2D"]
-position = Vector2(192, -64)
 emitting = false
 amount = 6
 lifetime = 0.5
