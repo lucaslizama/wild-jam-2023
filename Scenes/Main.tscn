@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqmka4eajpjma"]
+[gd_scene load_steps=5 format=3 uid="uid://dqmka4eajpjma"]
 
 [ext_resource type="PackedScene" uid="uid://dohh34b57rv1a" path="res://Scenes/Player.tscn" id="1_0dvxw"]
 [ext_resource type="PackedScene" uid="uid://ur25y66c3gkl" path="res://Scenes/PlayerCamera.tscn" id="2_3e7un"]
 [ext_resource type="PackedScene" uid="uid://g13vri1qjp2w" path="res://Scenes/Levels/Level_01.tscn" id="2_4ckgj"]
+[ext_resource type="PackedScene" uid="uid://v0s7p75j6t87" path="res://Scenes/Portal.tscn" id="4_oyh36"]
 
 [node name="Main" type="Node"]
 
@@ -21,3 +22,15 @@ tileMap = NodePath("../../Level")
 
 [node name="Level" parent="." instance=ExtResource("2_4ckgj")]
 cell_quadrant_size = 128
+
+[node name="Portal" parent="." node_paths=PackedStringArray("destination") instance=ExtResource("4_oyh36")]
+position = Vector2(2166, 361)
+destination = NodePath("../Portal2")
+
+[node name="Portal2" parent="." instance=ExtResource("4_oyh36")]
+position = Vector2(2858, 279)
+
+[node name="AnimatedSprite2D" parent="Portal2" index="0"]
+animation = &"red"
+
+[editable path="Portal2"]

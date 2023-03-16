@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=3 uid="uid://v0s7p75j6t87"]
+
+[ext_resource type="Texture2D" uid="uid://dof3k2qwt5e6t" path="res://Textures/portals.png" id="1_5c8ge"]
+[ext_resource type="Script" path="res://Scripts/Portal.cs" id="1_yy5mi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfxx8"]
+atlas = ExtResource("1_5c8ge")
+region = Rect2(0, 0, 130, 280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4isge"]
+atlas = ExtResource("1_5c8ge")
+region = Rect2(369, 0, 123, 280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qm0j1"]
+atlas = ExtResource("1_5c8ge")
+region = Rect2(248, 0, 124, 280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gs6gw"]
+atlas = ExtResource("1_5c8ge")
+region = Rect2(129, 0, 124, 280)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y4pln"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfxx8")
+}],
+"loop": true,
+"name": &"blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4isge")
+}],
+"loop": true,
+"name": &"green",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qm0j1")
+}],
+"loop": true,
+"name": &"purple",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gs6gw")
+}],
+"loop": true,
+"name": &"red",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4k363"]
+radius = 32.0
+height = 156.0
+
+[node name="Portal" type="Area2D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_yy5mi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_y4pln")
+animation = &"blue"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(13, 0)
+shape = SubResource("CapsuleShape2D_4k363")
+debug_color = Color(0.988235, 0.309804, 0.4, 0.419608)
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
+[connection signal="body_exited" from="." to="." method="OnBodyExited"]
