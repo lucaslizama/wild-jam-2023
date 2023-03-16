@@ -87,4 +87,4 @@ animations = [{
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -64)
 sprite_frames = SubResource("SpriteFrames_yju4c")
-animation = &"dead"
+animation = &"jump"
