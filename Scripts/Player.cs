@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 public partial class Player : TeleportableCharacterBody2D
@@ -8,13 +9,8 @@ public partial class Player : TeleportableCharacterBody2D
   [Export] private PackedScene bomb;
   private Color lineColor = new Color(1, 1, 1);
 
-  private float gravity;
+  private float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
   private bool drawLine = false;
-
-  public override void _Ready()
-  {
-    gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
-  }
 
   public override void _Draw()
   {
@@ -62,6 +58,27 @@ public partial class Player : TeleportableCharacterBody2D
     Jump();
     ApplyHorizontalSpeed();
     MoveAndSlide();
+    ProcessAnimations();
+  }
+
+  private void ProcessAnimations()
+  {
+    if (Velocity.X != 0)
+    {
+      GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("run");
+      if (Velocity.X < 0)
+      {
+        GetNode<AnimatedSprite2D>("AnimatedSprite2D").FlipH = true;
+      }
+      else if (Velocity.X >= 0)
+      {
+        GetNode<AnimatedSprite2D>("AnimatedSprite2D").FlipH = false;
+      }
+    }
+    else
+    {
+      GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("idle");
+    }
   }
 
   public void ApplyGravity(double delta)
