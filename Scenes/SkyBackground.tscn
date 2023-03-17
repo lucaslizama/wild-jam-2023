@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://8i17ahpe3oot"]
+
+[ext_resource type="Texture2D" uid="uid://bnhoj2tcwd5rr" path="res://Textures/SkyBackground.png" id="1_bkpaw"]
+[ext_resource type="Texture2D" uid="uid://dornlnyyr0ade" path="res://Textures/stars.png" id="2_7xo1s"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_05uhs"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_phjh0"]
+colors = PackedColorArray(1, 1, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_804s2"]
+gradient = SubResource("Gradient_phjh0")
+
+[sub_resource type="Gradient" id="Gradient_vynhs"]
+offsets = PackedFloat32Array(0, 0.493113, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ihgva"]
+gradient = SubResource("Gradient_vynhs")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qw4bf"]
+emission_shape = 3
+emission_box_extents = Vector3(720, 360, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.2
+scale_max = 0.4
+color_ramp = SubResource("GradientTexture1D_ihgva")
+color_initial_ramp = SubResource("GradientTexture1D_804s2")
+turbulence_enabled = true
+anim_offset_max = 1.0
+
+[node name="SkyBackground" type="CanvasLayer"]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_bkpaw")
+expand_mode = 1
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_05uhs")
+position = Vector2(720, 360)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_qw4bf")
+texture = ExtResource("2_7xo1s")
+lifetime = 10.0
