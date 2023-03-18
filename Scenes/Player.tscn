@@ -1,92 +1,87 @@
-[gd_scene load_steps=13 format=3 uid="uid://dohh34b57rv1a"]
+[gd_scene load_steps=7 format=3 uid="uid://dohh34b57rv1a"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_wtohv"]
 [ext_resource type="PackedScene" uid="uid://d2e0gvpun37ft" path="res://Scenes/Bomb.tscn" id="2_whlhp"]
-[ext_resource type="Texture2D" uid="uid://b8nkktw44rj11" path="res://Textures/PlayerBear.png" id="3_lfagn"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4embw"]
-atlas = ExtResource("3_lfagn")
-region = Rect2(0, 128, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6adq1"]
-atlas = ExtResource("3_lfagn")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mbrrj"]
-atlas = ExtResource("3_lfagn")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_il0b6"]
-atlas = ExtResource("3_lfagn")
-region = Rect2(256, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xavxc"]
-atlas = ExtResource("3_lfagn")
-region = Rect2(384, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e21eb"]
-atlas = ExtResource("3_lfagn")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ruymv"]
-atlas = ExtResource("3_lfagn")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_qoqos"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4embw")
-}],
-"loop": true,
-"name": &"dead",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6adq1")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mbrrj")
-}],
-"loop": true,
-"name": &"jump",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_il0b6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xavxc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e21eb")
-}],
-"loop": true,
-"name": &"land",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ruymv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e21eb")
-}],
-"loop": true,
-"name": &"run",
-"speed": 5.0
-}]
+[ext_resource type="SpriteFrames" uid="uid://d0rj1l4cnjnxr" path="res://Scenes/PlayerBear1_SpriteFrames.tres" id="3_2xbv1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qpemn"]
 radius = 27.0
 height = 106.0
+
+[sub_resource type="Animation" id="Animation_bhu3b"]
+resource_name = "dead"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -100, -0.25, 0, 0.25, 0, 500, -0.1, -26, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath(".:modulate:r")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath(".:modulate:g")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath(".:modulate:b")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:modulate:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.6, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cok2q"]
+_data = {
+"dead": SubResource("Animation_bhu3b")
+}
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
@@ -96,8 +91,8 @@ gravityScale = 1.5
 bomb = ExtResource("2_whlhp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_qoqos")
-animation = &"dead"
+sprite_frames = ExtResource("3_2xbv1")
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -106,3 +101,10 @@ shape = SubResource("CapsuleShape2D_qpemn")
 
 [node name="BombSpawn" type="Node2D" parent="."]
 position = Vector2(-44, 12)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimatedSprite2D")
+autoplay = "dead"
+libraries = {
+"": SubResource("AnimationLibrary_cok2q")
+}
