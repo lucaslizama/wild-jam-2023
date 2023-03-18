@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccgcy8356u8e6"]
+
+[ext_resource type="Texture2D" uid="uid://vflcu1p63yv6" path="res://Textures/Smoke_2x2.png" id="1_tv8hp"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mw6vi"]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_1cj5p"]
+_data = [Vector2(0, 1), 0.0, 0.152133, 0, 0, Vector2(1, 0), -2.52493, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_4rbbm"]
+offsets = PackedFloat32Array(0.638514, 0.986486)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="VFX_LimbDisappear" type="CPUParticles2D"]
+material = SubResource("CanvasItemMaterial_mw6vi")
+emitting = false
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 0.5
+local_coords = true
+texture = ExtResource("1_tv8hp")
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 250.0
+angle_max = 360.0
+scale_amount_min = 0.25
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_1cj5p")
+color_ramp = SubResource("Gradient_4rbbm")
+anim_offset_max = 1.0
