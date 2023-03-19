@@ -1,16 +1,18 @@
-using System;
 using Godot;
 
 public partial class Player : TeleportableCharacterBody2D
 {
+  [ExportGroup("Movement")]
   [Export] private float speed = 300.0f;
   [Export] private float jumpVelocity = 700.0f;
   [Export] private float gravityScale = 2f;
+
+  [ExportGroup("Aim")]
+  [Export] private bool drawLine = false;
+  [Export] private Color lineColor = new Color(1, 1, 1);
   [Export] private PackedScene bomb;
-  private Color lineColor = new Color(1, 1, 1);
 
   private float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
-  private bool drawLine = false;
 
   public override void _Draw()
   {
