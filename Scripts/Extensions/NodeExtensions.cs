@@ -1,5 +1,7 @@
 using Godot;
 
+namespace WildJam2023.Scripts.Extensions;
+
 public static class NodeExtensions
 {
   public static Node GetRootNode(this Node node)

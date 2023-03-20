@@ -1,4 +1,7 @@
 using Godot;
+using WildJam2023.Scripts.Interfaces;
+
+namespace WildJam2023.Scripts;
 
 public partial class Portal : Area2D
 {

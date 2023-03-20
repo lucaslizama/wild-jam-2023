@@ -1,6 +1,8 @@
 using Godot;
 
-public partial class Player : TeleportableCharacterBody2D
+namespace WildJam2023.Scripts;
+
+public partial class Player : Teleportable.TeleportableCharacterBody2D
 {
   [ExportGroup("Movement")]
   [Export] private float speed = 300.0f;

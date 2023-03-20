@@ -1,9 +1,13 @@
 using Godot;
+using WildJam2023.Scripts.Interfaces;
 
-public abstract partial class TeleportableRigidbody2D : RigidBody2D, ITeleportable
+namespace WildJam2023.Scripts.Teleportable
 {
-  protected bool willTeleport = false;
-  protected Vector2 teleportTarget = Vector2.Zero;
+  public abstract partial class TeleportableRigidbody2D : RigidBody2D, ITeleportable
+  {
+    protected bool WillTeleport { get; set; }
+    protected Vector2 TeleportTarget { get; set; } = Vector2.Zero;
 
-  public abstract void Teleport(Vector2 destination);
+    public abstract void Teleport(Vector2 destination);
+  }
 }

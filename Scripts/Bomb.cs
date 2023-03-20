@@ -1,6 +1,9 @@
 using Godot;
+using WildJam2023.Scripts.Extensions;
 
-public partial class Bomb : TeleportableRigidbody2D
+namespace WildJam2023.Scripts;
+
+public partial class Bomb : Teleportable.TeleportableRigidbody2D
 {
   [Export] private float throwVelocity;
 
@@ -15,7 +18,7 @@ public partial class Bomb : TeleportableRigidbody2D
   {
     if (body is Portal) return;
 
-    SetDeferred(PropertyName.Freeze, true);
+    SetDeferred(RigidBody2D.PropertyName.Freeze, true);
     await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
     GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("explosion");
     await ToSignal(GetNode<AnimatedSprite2D>("AnimatedSprite2D"), AnimatedSprite2D.SignalName.AnimationFinished);
@@ -24,19 +27,19 @@ public partial class Bomb : TeleportableRigidbody2D
 
   public override void _IntegrateForces(PhysicsDirectBodyState2D state)
   {
-    if (willTeleport && teleportTarget != Vector2.Zero)
+    if (WillTeleport && TeleportTarget != Vector2.Zero)
     {
       var transform = state.Transform;
-      transform.Origin = teleportTarget;
+      transform.Origin = TeleportTarget;
       state.Transform = transform;
-      willTeleport = false;
-      teleportTarget = Vector2.Zero;
+      WillTeleport = false;
+      TeleportTarget = Vector2.Zero;
     }
   }
 
   public override void Teleport(Vector2 destination)
   {
-    teleportTarget = destination;
-    willTeleport = true;
+    TeleportTarget = destination;
+    WillTeleport = true;
   }
 }
