@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqmka4eajpjma"]
+[gd_scene load_steps=8 format=3 uid="uid://dqmka4eajpjma"]
 
 [ext_resource type="PackedScene" uid="uid://dohh34b57rv1a" path="res://Scenes/Player.tscn" id="1_0dvxw"]
 [ext_resource type="PackedScene" uid="uid://ur25y66c3gkl" path="res://Scenes/PlayerCamera.tscn" id="2_3e7un"]
 [ext_resource type="PackedScene" uid="uid://g13vri1qjp2w" path="res://Scenes/Levels/Level_01.tscn" id="2_4ckgj"]
+[ext_resource type="Texture2D" uid="uid://b8nkktw44rj11" path="res://Textures/PlayerBear.png" id="2_qvu61"]
+[ext_resource type="Texture2D" uid="uid://bs8skrf0a2eis" path="res://Textures/PlayerBear2.png" id="3_hco0y"]
+[ext_resource type="Texture2D" uid="uid://b5u3bns66kmgp" path="res://Textures/PlayerBear3.png" id="4_cxsld"]
 [ext_resource type="PackedScene" uid="uid://v0s7p75j6t87" path="res://Scenes/Portal.tscn" id="4_oyh36"]
 
 [node name="Main" type="Node"]
@@ -12,6 +15,11 @@ position = Vector2(4652, 431)
 speed = 600.0
 jumpVelocity = 900.0
 gravityScale = 2.0
+spriteSets = {
+"healthy": ExtResource("2_qvu61"),
+"hurt": ExtResource("3_hco0y"),
+"hurting": ExtResource("4_cxsld")
+}
 
 [node name="PlayerCamera" parent="Player" node_paths=PackedStringArray("tileMap") instance=ExtResource("2_3e7un")]
 zoom = Vector2(0.628, 0.628)

@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 using System.Linq;
 using WildJam2023.Scripts.Extensions;
 
@@ -6,13 +7,19 @@ namespace WildJam2023.Scripts;
 
 public partial class Player : Teleportable.TeleportableCharacterBody2D
 {
-	[ExportGroup("Movement")] [Export] private float speed = 300.0f;
+	[ExportGroup("Movement")] 
+	[Export] private float speed = 300.0f;
 	[Export] private float jumpVelocity = 700.0f;
 	[Export] private float gravityScale = 2f;
 
-	[ExportGroup("Aim")] [Export] private bool drawLine = false;
+	[ExportGroup("Aim")] 
+	[Export] private bool drawLine = false;
 	[Export] private Color lineColor = new Color(1, 1, 1);
 	[Export] private PackedScene bombScene;
+
+	[ExportGroup("Status")] 
+	[Export] private int hp = 3;
+	[Export] private Dictionary<string, Texture2D> spriteSets;
 
 	// Node References
 	private AnimationTree animTree;
@@ -42,25 +49,11 @@ public partial class Player : Teleportable.TeleportableCharacterBody2D
 
 	public override void _Process(double delta)
 	{
-		if (Input.IsActionJustPressed("bomb"))
-		{
-			drawLine = true;
-			bombInstance = bombScene.Instantiate<Bomb>();
-			bombSpawn.AddChild(bombInstance);
-		}
-		else if (Input.IsActionPressed("bomb"))
-		{
-			QueueRedraw();
-		}
-		else if (Input.IsActionJustReleased("bomb"))
-		{
-			drawLine = false;
-			QueueRedraw();
-			var direction = (GetLocalMousePosition() - ToLocal(GlobalPosition)).Normalized();
-			bombInstance.Throw(direction);
-		}
+		ProcessBombThrow();
+		if (Input.IsActionJustPressed("damage")) GetHurt();
+		if (Input.IsActionJustPressed("recover")) Recover();
 	}
-
+	
 	public override void _PhysicsProcess(double delta)
 	{
 		ApplyGravity(delta);
@@ -120,6 +113,27 @@ public partial class Player : Teleportable.TeleportableCharacterBody2D
 			_ => sprite.FlipH
 		};
 	}
+	
+	private void ProcessBombThrow()
+	{
+		if (Input.IsActionJustPressed("bomb"))
+		{
+			drawLine = true;
+			bombInstance = bombScene.Instantiate<Bomb>();
+			bombSpawn.AddChild(bombInstance);
+		}
+		else if (Input.IsActionPressed("bomb"))
+		{
+			QueueRedraw();
+		}
+		else if (Input.IsActionJustReleased("bomb"))
+		{
+			drawLine = false;
+			QueueRedraw();
+			var direction = (GetLocalMousePosition() - ToLocal(GlobalPosition)).Normalized();
+			bombInstance.Throw(direction);
+		}
+	}
 
 	private void ApplyGravity(double delta)
 	{
@@ -143,6 +157,29 @@ public partial class Player : Teleportable.TeleportableCharacterBody2D
 		velocity.X = direction != Vector2.Zero ? direction.X * speed : Mathf.MoveToward(velocity.X, 0, speed);
 
 		Velocity = velocity;
+	}
+
+	private void GetHurt()
+	{
+		hp = Mathf.Clamp(hp - 1, 0, 3);
+		AssignTexture();
+	}
+
+	private void Recover()
+	{
+		hp = Mathf.Clamp(hp + 1, 0, 3);
+		AssignTexture();
+	}
+
+	private void AssignTexture()
+	{
+		sprite.Texture = hp switch
+		{
+			3 => spriteSets["healthy"],
+			2 => spriteSets["hurt"],
+			1 => spriteSets["hurting"],
+			_ => spriteSets["healthy"]
+		};
 	}
 
 	public override void Teleport(Vector2 destination)
