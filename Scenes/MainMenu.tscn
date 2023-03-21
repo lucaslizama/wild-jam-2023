@@ -1,0 +1,123 @@
+[gd_scene load_steps=12 format=3 uid="uid://e6su8iehxd6s"]
+
+[ext_resource type="Shader" uid="uid://4qd5kid5r26o" path="res://UI/Shaders/Shader_MenuBacground.tres" id="1_grxxs"]
+[ext_resource type="Texture2D" uid="uid://brruv5bh5rde7" path="res://Textures/MenuBackground.png" id="2_p3t5k"]
+[ext_resource type="Theme" uid="uid://cyyi814japrxd" path="res://UI/Themes/MainMenuButton.tres" id="3_60t1y"]
+[ext_resource type="FontFile" uid="uid://b3eqor0tyfpoe" path="res://UI/Fonts/PoorStory-Regular.ttf" id="4_bqrxw"]
+[ext_resource type="Shader" uid="uid://btuxoowwqqpni" path="res://UI/Shaders/Shader_GradientLabel.tres" id="5_6m1k0"]
+
+[sub_resource type="Gradient" id="Gradient_o8db0"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.501424, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_iyd7g"]
+gradient = SubResource("Gradient_o8db0")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_udm1p"]
+shader = ExtResource("1_grxxs")
+shader_parameter/Color_A = Color(0.160784, 0.678431, 1, 1)
+shader_parameter/Color_B = Color(1, 0.909804, 0.580392, 1)
+shader_parameter/Tiling = Vector2(1, 2)
+shader_parameter/Panning_Speed = Vector2(0, -0.1)
+shader_parameter/Distort_Texture = SubResource("GradientTexture2D_iyd7g")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a6xsp"]
+
+[sub_resource type="Theme" id="Theme_d63br"]
+default_font = ExtResource("4_bqrxw")
+default_font_size = 217
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sx34l"]
+shader = ExtResource("5_6m1k0")
+
+[node name="CanvasLayer" type="CanvasLayer"]
+follow_viewport_enabled = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_udm1p")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_p3t5k")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -240.0
+offset_right = 140.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="StartGame2" type="Button" parent="MarginContainer/VBoxContainer"]
+material = SubResource("ShaderMaterial_a6xsp")
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_60t1y")
+text = "START GAME
+"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+material = SubResource("ShaderMaterial_a6xsp")
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_60t1y")
+text = "QUIT
+"
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -58.0
+offset_bottom = -58.0
+grow_horizontal = 2
+grow_vertical = 2
+use_top_left = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CenterContainer/VBoxContainer2"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_d63br")
+theme_override_colors/font_outline_color = Color(0.128, 0.5424, 0.8, 1)
+theme_override_constants/outline_size = 11
+theme_override_font_sizes/normal_font_size = 24
+text = "A game by
+Lucas Lizama and Ian G. Chang"
+fit_content = true
+autowrap_mode = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer2"]
+material = SubResource("ShaderMaterial_sx34l")
+clip_contents = false
+layout_mode = 2
+theme = SubResource("Theme_d63br")
+theme_override_colors/font_outline_color = Color(0.128, 0.5424, 0.8, 1)
+theme_override_constants/outline_size = 57
+text = "WilD JAM"
+fit_content = true
+autowrap_mode = 0

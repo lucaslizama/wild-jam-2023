@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnhoj2tcwd5rr"
-path.s3tc="res://.godot/imported/SkyBackground.png-fd4c41257cfc0024545c7e6bed984a76.s3tc.ctex"
+uid="uid://brruv5bh5rde7"
+path.s3tc="res://.godot/imported/MenuBackground.png-da65f3cc3f5b3145d4b67ada105a6a1d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Textures/SkyBackground.png"
-dest_files=["res://.godot/imported/SkyBackground.png-fd4c41257cfc0024545c7e6bed984a76.s3tc.ctex"]
+source_file="res://Textures/MenuBackground.png"
+dest_files=["res://.godot/imported/MenuBackground.png-da65f3cc3f5b3145d4b67ada105a6a1d.s3tc.ctex"]
 
 [params]
 

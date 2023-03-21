@@ -11,19 +11,19 @@ public partial class Portal : Area2D
 
   private void OnBodyEntered(Node2D body)
   {
-    if (body is ITeleportable teleportable && canSend)
-    {
-      teleportable.Teleport(destination.Position);
-      destination.canSend = false;
-    }
+	if (body is ITeleportable teleportable && canSend)
+	{
+	  teleportable.Teleport(destination.Position);
+	  destination.canSend = false;
+	}
   }
 
   private void OnBodyExited(Node2D body)
   {
-    if (body is ITeleportable && !canSend)
-    {
-      GD.Print("Exited: " + Name);
-      canSend = true;
-    }
+	if (body is ITeleportable && !canSend)
+	{
+	  GD.Print("Exited: " + Name);
+	  canSend = true;
+	}
   }
 }

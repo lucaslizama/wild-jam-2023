@@ -1,0 +1,50 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://c56kd3kd3n182"]
+
+[ext_resource type="FontFile" uid="uid://v8mo64cv52du" path="res://UI/Fonts/Dangrek-Regular.ttf" id="1_wg842"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ijbf5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvf8v"]
+bg_color = Color(0.160784, 0.678431, 1, 1)
+border_width_bottom = 10
+border_color = Color(0.129412, 0.541176, 0.8, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_57x2h"]
+bg_color = Color(0.160784, 0.678431, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 12
+border_color = Color(0.129412, 0.541176, 0.8, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_61qng"]
+bg_color = Color(0.160784, 0.678431, 1, 1)
+border_color = Color(0.129412, 0.541176, 0.8, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+
+[resource]
+default_font = ExtResource("1_wg842")
+default_font_size = 32
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(1, 1, 1, 1)
+Button/styles/focus = SubResource("StyleBoxEmpty_ijbf5")
+Button/styles/hover = SubResource("StyleBoxFlat_wvf8v")
+Button/styles/normal = SubResource("StyleBoxFlat_57x2h")
+Button/styles/pressed = SubResource("StyleBoxFlat_61qng")
