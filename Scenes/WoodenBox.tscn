@@ -19,14 +19,20 @@ texture = ExtResource("1_x5oof")
 position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_hi2oi")
 
-[node name="VFX_WoodenBoxDestroy" parent="." instance=ExtResource("3_b2dvt")]
+[node name="DestroyVFX" parent="." instance=ExtResource("3_b2dvt")]
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 7
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_hi2oi")
 
+[node name="CleanTimer" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true
+
 [connection signal="body_entered" from="Area2D" to="." method="OnArea2DBodyEntered"]
+[connection signal="timeout" from="CleanTimer" to="." method="OnCleanTimerTimeout"]
