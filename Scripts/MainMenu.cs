@@ -1,5 +1,6 @@
 using Godot;
-using System;
+
+namespace WildJam2023.Scripts;
 
 public partial class MainMenu : CanvasLayer
 {
