@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dohh34b57rv1a"]
+[gd_scene load_steps=30 format=3 uid="uid://dohh34b57rv1a"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_wtohv"]
 [ext_resource type="PackedScene" uid="uid://d2e0gvpun37ft" path="res://Scenes/Bomb.tscn" id="2_whlhp"]
@@ -58,7 +58,6 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_bhu3b"]
 resource_name = "dead"
-loop_mode = 1
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -173,7 +172,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 1]
+"values": [1, 0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cok2q"]
@@ -202,6 +201,7 @@ animation = &"land"
 animation = &"run"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yyhus"]
+switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u4fb6"]
@@ -224,11 +224,13 @@ switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u6m2u"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p2nm0"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_g10ru"]
-states/End/position = Vector2(510, 234)
+states/End/position = Vector2(510, -193)
 states/Start/position = Vector2(136, 114)
 states/dead/node = SubResource("AnimationNodeAnimation_8vyst")
-states/dead/position = Vector2(338, 234)
+states/dead/position = Vector2(338, -193)
 states/idle/node = SubResource("AnimationNodeAnimation_07ifg")
 states/idle/position = Vector2(338, 114)
 states/jump/node = SubResource("AnimationNodeAnimation_b55yl")
@@ -237,8 +239,8 @@ states/land/node = SubResource("AnimationNodeAnimation_f8cek")
 states/land/position = Vector2(510, 25)
 states/run/node = SubResource("AnimationNodeAnimation_guvib")
 states/run/position = Vector2(693, 114)
-transitions = ["dead", "End", SubResource("AnimationNodeStateMachineTransition_yyhus"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_u4fb6"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_etvbk"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_he80s"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_eb7k1"), "run", "jump", SubResource("AnimationNodeStateMachineTransition_kycmw"), "jump", "land", SubResource("AnimationNodeStateMachineTransition_xdd2n"), "land", "idle", SubResource("AnimationNodeStateMachineTransition_47rn1"), "land", "run", SubResource("AnimationNodeStateMachineTransition_hka6b"), "idle", "dead", SubResource("AnimationNodeStateMachineTransition_u6m2u")]
-graph_offset = Vector2(43, -156.422)
+transitions = ["dead", "End", SubResource("AnimationNodeStateMachineTransition_yyhus"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_u4fb6"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_etvbk"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_he80s"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_eb7k1"), "run", "jump", SubResource("AnimationNodeStateMachineTransition_kycmw"), "jump", "land", SubResource("AnimationNodeStateMachineTransition_xdd2n"), "land", "idle", SubResource("AnimationNodeStateMachineTransition_47rn1"), "land", "run", SubResource("AnimationNodeStateMachineTransition_hka6b"), "idle", "dead", SubResource("AnimationNodeStateMachineTransition_u6m2u"), "jump", "dead", SubResource("AnimationNodeStateMachineTransition_p2nm0")]
+graph_offset = Vector2(-109, -215.422)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_r7w3a"]
 

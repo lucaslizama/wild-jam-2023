@@ -52,15 +52,24 @@ public partial class Player : Teleportable.TeleportableCharacterBody2D
 		ProcessBombThrow();
 		if (Input.IsActionJustPressed("damage")) GetHurt();
 		if (Input.IsActionJustPressed("recover")) Recover();
+		if (hp == 0) SetPhysicsProcess(false);
+		ProcessAnimations();
+		ProcessReloadScene();
 	}
-	
+
+	private async void ProcessReloadScene()
+	{
+		if (animState.GetCurrentNode() != "dead") return;
+		await ToSignal(animTree, AnimationTree.SignalName.AnimationFinished);
+		GetTree().ReloadCurrentScene();
+	}
+
 	public override void _PhysicsProcess(double delta)
 	{
 		ApplyGravity(delta);
 		Jump();
 		ApplyHorizontalSpeed();
 		MoveAndSlide();
-		ProcessAnimations();
 	}
 
 	private void ProcessAnimations()
@@ -69,7 +78,13 @@ public partial class Player : Teleportable.TeleportableCharacterBody2D
 		ProcessIdle();
 		ProcessJump();
 		ProcessLand();
+		ProcessDeath();
 		ProcessSpriteFlip();
+	}
+
+	private void ProcessDeath()
+	{
+		if(hp == 0) animState.Travel("dead", false);
 	}
 
 	private void ProcessIdle()
