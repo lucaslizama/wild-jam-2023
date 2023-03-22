@@ -161,7 +161,6 @@ tracks/0/keys = {
 resource_name = "run"
 length = 0.6
 loop_mode = 1
-step = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -220,11 +219,11 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_47rn1"]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hka6b"]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u6m2u"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p2nm0"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7hsqx"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_g10ru"]
 states/End/position = Vector2(510, -193)
@@ -234,13 +233,13 @@ states/dead/position = Vector2(338, -193)
 states/idle/node = SubResource("AnimationNodeAnimation_07ifg")
 states/idle/position = Vector2(338, 114)
 states/jump/node = SubResource("AnimationNodeAnimation_b55yl")
-states/jump/position = Vector2(510, -83)
+states/jump/position = Vector2(533, -74)
 states/land/node = SubResource("AnimationNodeAnimation_f8cek")
-states/land/position = Vector2(510, 25)
+states/land/position = Vector2(533, 44)
 states/run/node = SubResource("AnimationNodeAnimation_guvib")
 states/run/position = Vector2(693, 114)
-transitions = ["dead", "End", SubResource("AnimationNodeStateMachineTransition_yyhus"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_u4fb6"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_etvbk"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_he80s"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_eb7k1"), "run", "jump", SubResource("AnimationNodeStateMachineTransition_kycmw"), "jump", "land", SubResource("AnimationNodeStateMachineTransition_xdd2n"), "land", "idle", SubResource("AnimationNodeStateMachineTransition_47rn1"), "land", "run", SubResource("AnimationNodeStateMachineTransition_hka6b"), "idle", "dead", SubResource("AnimationNodeStateMachineTransition_u6m2u"), "jump", "dead", SubResource("AnimationNodeStateMachineTransition_p2nm0")]
-graph_offset = Vector2(-109, -215.422)
+transitions = ["dead", "End", SubResource("AnimationNodeStateMachineTransition_yyhus"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_u4fb6"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_etvbk"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_he80s"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_eb7k1"), "run", "jump", SubResource("AnimationNodeStateMachineTransition_kycmw"), "jump", "land", SubResource("AnimationNodeStateMachineTransition_xdd2n"), "land", "idle", SubResource("AnimationNodeStateMachineTransition_47rn1"), "idle", "dead", SubResource("AnimationNodeStateMachineTransition_u6m2u"), "jump", "dead", SubResource("AnimationNodeStateMachineTransition_p2nm0"), "jump", "run", SubResource("AnimationNodeStateMachineTransition_7hsqx")]
+graph_offset = Vector2(-6, -142.422)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_r7w3a"]
 
@@ -249,6 +248,7 @@ collision_mask = 2
 script = ExtResource("1_wtohv")
 jumpVelocity = 600.0
 gravityScale = 1.5
+lineWidth = 10
 bombScene = ExtResource("2_whlhp")
 
 [node name="Sprite" type="Sprite2D" parent="."]
