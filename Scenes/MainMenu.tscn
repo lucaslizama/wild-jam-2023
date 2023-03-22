@@ -1,6 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://e6su8iehxd6s"]
+[gd_scene load_steps=14 format=3 uid="uid://e6su8iehxd6s"]
 
 [ext_resource type="Shader" uid="uid://4qd5kid5r26o" path="res://UI/Shaders/Shader_MenuBacground.tres" id="1_grxxs"]
+[ext_resource type="Script" path="res://Scripts/MainMenu.cs" id="1_lo4a4"]
+[ext_resource type="PackedScene" uid="uid://dqmka4eajpjma" path="res://Scenes/Main.tscn" id="2_ms5a3"]
 [ext_resource type="Texture2D" uid="uid://brruv5bh5rde7" path="res://Textures/MenuBackground.png" id="2_p3t5k"]
 [ext_resource type="Theme" uid="uid://cyyi814japrxd" path="res://UI/Themes/MainMenuButton.tres" id="3_60t1y"]
 [ext_resource type="FontFile" uid="uid://b3eqor0tyfpoe" path="res://UI/Fonts/PoorStory-Regular.ttf" id="4_bqrxw"]
@@ -36,6 +38,8 @@ shader = ExtResource("5_6m1k0")
 
 [node name="CanvasLayer" type="CanvasLayer"]
 follow_viewport_enabled = true
+script = ExtResource("1_lo4a4")
+level = ExtResource("2_ms5a3")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_repeat = 2
@@ -121,3 +125,6 @@ theme_override_constants/outline_size = 57
 text = "WilD JAM"
 fit_content = true
 autowrap_mode = 0
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/StartGame" to="." method="OnStartGamePressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="OnQuitPressed"]
